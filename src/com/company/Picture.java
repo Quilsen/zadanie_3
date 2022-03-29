@@ -39,4 +39,18 @@ public class Picture {
         return sb.toString();
     }
 
+    public double getArea() {
+        double totalArea = 0;
+        for(int i = 0; i < points.size(); i++) {
+            totalArea += points.get(i).getArea();
+        }
+        for(int i = 0; i < sections.size(); i++) {
+            totalArea += sections.get(i).getArea();
+        }
+        for(int i = 0; i<circles.size(); i++){
+            totalArea += circles.get(i).getArea();
+        }
+        return totalArea;
+    }
+
 }
