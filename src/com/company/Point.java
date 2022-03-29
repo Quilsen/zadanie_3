@@ -28,6 +28,14 @@ public class Point {
         return y;
     }
 
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     public void move(double dx, double dy){
         x+=dx;
         y+=dy;

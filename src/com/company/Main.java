@@ -6,6 +6,8 @@ public class Main {
         Picture picture = new Picture();
         picture.add(new Point(1,2));
         picture.add(new Section(new Point(0,0),new Point(2,2)));
+        picture.add(new Circle(new Point(1,2),10));
+        System.out.println(picture);
 
     }
 }
