@@ -60,27 +60,27 @@ public class Picture {
     }
 
     public void movePicture(double dx, double dy){
-        for(int i = 0; i < points.size(); i++) {
-            points.get(i).move(dx,dy);
+        for (Point point : points) {
+            point.move(dx, dy);
         }
-        for(int i = 0; i < sections.size(); i++) {
-            sections.get(i).move(dx,dy);
+        for (Section section : sections) {
+            section.move(dx, dy);
         }
-        for(int i = 0; i<circles.size(); i++){
-            circles.get(i).move(dx,dy);
+        for (Circle circle : circles) {
+            circle.move(dx, dy);
         }
     }
 
     public double getArea() {
         double totalArea = 0;
-        for(int i = 0; i < points.size(); i++) {
-            totalArea += points.get(i).getArea();
+        for (Point point : points) {
+            totalArea += point.getArea();
         }
-        for(int i = 0; i < sections.size(); i++) {
-            totalArea += sections.get(i).getArea();
+        for (Section section : sections) {
+            totalArea += section.getArea();
         }
-        for(int i = 0; i<circles.size(); i++){
-            totalArea += circles.get(i).getArea();
+        for (Circle circle : circles) {
+            totalArea += circle.getArea();
         }
         return totalArea;
     }
