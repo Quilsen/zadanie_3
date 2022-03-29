@@ -10,6 +10,26 @@ public class Picture {
 
     public Picture() {}
 
+    public List<Section> getSections() {
+        return sections;
+    }
+    public List<Point> getPoints() {
+        return points;
+    }
+    public List<Circle> getCircles() {
+        return circles;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+    public void setCircles(List<Circle> circles) {
+        this.circles = circles;
+    }
+
     public void add(Point p){
         points.add(p);
     }
@@ -37,6 +57,18 @@ public class Picture {
             sb.append(i+1).append(": ").append(sections.get(i)).append("\n");
         }
         return sb.toString();
+    }
+
+    public void movePicture(double dx, double dy){
+        for(int i = 0; i < points.size(); i++) {
+            points.get(i).move(dx,dy);
+        }
+        for(int i = 0; i < sections.size(); i++) {
+            sections.get(i).move(dx,dy);
+        }
+        for(int i = 0; i<circles.size(); i++){
+            circles.get(i).move(dx,dy);
+        }
     }
 
     public double getArea() {
