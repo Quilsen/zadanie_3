@@ -8,7 +8,7 @@ public class Circle {
 
     public Circle(Point o, double r){
         this.o = o;
-        this.r = r;
+        this.r = Math.abs(r);
     }
 
     public Circle(Circle c){
