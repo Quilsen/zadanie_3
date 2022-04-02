@@ -1,16 +1,18 @@
 package com.company;
 
-public class Point {
+public class Point extends Element {
     private double x,y;
 
-    public Point() {}
+    public Point(){}
 
-    public Point(double x, double y){
+    public Point(double x, double y,String label){
+        super(label);
         this.x = x;
         this.y = y;
     }
 
     public Point(Point p){
+        super(p);
         this.x = p.x;
         this.y = p.y;
     }
@@ -31,16 +33,19 @@ public class Point {
     @Override
     public String toString() {
         return "Point{" +
-                "x=" + x +
+                getLabel() +
+                ": x=" + x +
                 ", y=" + y +
                 '}';
     }
 
+    @Override
     public void move(double dx, double dy){
         x+=dx;
         y+=dy;
     }
 
+    @Override
     public double getArea(){
         return 0;
     }

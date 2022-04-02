@@ -1,16 +1,18 @@
 package com.company;
 
-public class Section {
+public class Section extends Element{
     private Point p1, p2;
 
     public Section(){}
 
-    public Section(Point p1, Point p2) {
+    public Section(Point p1, Point p2, String label) {
+        super(label);
         this.p1 = new Point(p1);
         this.p2 = new Point(p2);
     }
 
     public Section(Section s){
+        super(s);
         this.p1 = new Point(s.p1);
         this.p2 = new Point(s.p2);
     }
@@ -31,16 +33,19 @@ public class Section {
     @Override
     public String toString() {
         return "Section{" +
-                "p1=" + p1 +
+                getLabel() +
+                ": p1=" + p1 +
                 ", p2=" + p2 +
                 '}';
     }
 
+    @Override
     public void move(double dx, double dy){
         p1.move(dx,dy);
         p2.move(dx,dy);
     }
 
+    @Override
     public double getArea(){
         return 0;
     }
