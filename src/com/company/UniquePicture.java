@@ -14,10 +14,11 @@ public class UniquePicture extends Picture{
     }
 
     private boolean checkLabel(Element e){
-        Pattern p = Pattern.compile(e.getLabel());
+        Pattern p = Pattern.compile(e.getLabel().toLowerCase());
         boolean result = false;
         for(Element element:getElements()){
-            result = p.matcher(element.getLabel()).matches();
+            result = p.matcher(element.getLabel().toLowerCase()).matches();
+            if (result) break;
         }
         return result;
     }
