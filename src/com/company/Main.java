@@ -1,13 +1,36 @@
 package com.company;
 
 
+import java.io.*;
 import java.util.Scanner;
 
 
 public class Main {
 
     public static void main(String... args){
-        Picture p = null;
+        /*
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("object.bin"))){
+            outputStream.writeObject(serializedPicture);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Picture deserializedPicture = null;
+        Picture deserializedPicture2 = null;
+        try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("object.bin"))) {
+            deserializedPicture = (Picture) inputStream.readObject();
+            deserializedPicture2 = (Picture) inputStream.readObject();
+            System.out.println(deserializedPicture);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }*/
+
+
+        Picture serializedPicture = null;
         Scanner input = new Scanner(System.in);
         String option1 = "0", option2 ,label;
         double x1,y1,x2,y2,r;
@@ -23,17 +46,17 @@ public class Main {
             option1 = input.nextLine();
             switch (option1){
                 case "1" -> {
-                    p = new Picture();
+                    serializedPicture = new Picture();
                     System.out.println("Utworzono obiekt typu Picture\n");
                 }
 
                 case "2" -> {
-                    p = new UniquePicture();
+                    serializedPicture = new UniquePicture();
                     System.out.println("Utworzono obiekt typu UniquePicture\n");
                 }
 
                 case "3" ->{
-                    p = new StandarizedPicture();
+                    serializedPicture = new StandarizedPicture();
                     System.out.println("Utworzono obiekt typu StandarizedPicture\n");
                 }
 
@@ -63,8 +86,8 @@ public class Main {
                     y1 = input.nextDouble();
                     System.out.println("Podaj nazwę punktu label: \n");
                     label = input.next();
-                    if (p != null) {
-                        if (p.add(new Point(x1,y1,label))){
+                    if (serializedPicture != null) {
+                        if (serializedPicture.add(new Point(x1,y1,label))){
                             System.out.println("Utworzono obiekt z powodzeniem");
                         } else System.out.println("Nie udało się utworzyć obiektu");
                     }
@@ -80,8 +103,8 @@ public class Main {
                     System.out.println("Podaj nazwę sekcji label: \n");
                     label = input.next();
 
-                    if (p != null) {
-                        if (p.add(new Section(new Point(x1, y1,label), new Point(x2, y2, label),label))){
+                    if (serializedPicture != null) {
+                        if (serializedPicture.add(new Section(new Point(x1, y1), new Point(x2, y2),label))){
                             System.out.println("Utworzono obiekt z powodzeniem");
                         } else System.out.println("Nie udało się utworzyć obiektu");
                     }
@@ -100,8 +123,8 @@ public class Main {
                         throw new ArithmeticException("Wartość powinna być większa od zera");
                     }
 
-                    if (p != null) {
-                        if (p.add(new Circle(new Point(x1,y1,label),r,label))){
+                    if (serializedPicture != null) {
+                        if (serializedPicture.add(new Circle(new Point(x1,y1),r,label))){
                             System.out.println("Utworzono obiekt z powodzeniem");
                         } else System.out.println("Nie udało się utworzyć obiektu");
                     }
@@ -109,22 +132,22 @@ public class Main {
 
                 case "4" -> {
                     System.out.println("Obrazek : \n");
-                    System.out.println(p);
+                    System.out.println(serializedPicture);
                 }
 
                 case "5" -> {
                     System.out.println("Przesunięcie obrazka o zadany wektor x i y: \n");
                     x1 = input.nextDouble();
                     y1 = input.nextDouble();
-                    if (p != null) {
-                        p.move(x1, y1);
+                    if (serializedPicture != null) {
+                        serializedPicture.move(x1, y1);
                     }
                 }
 
                 case "6" -> {
                     System.out.println("Suma wszystkich pól wynosi: \n");
-                    if (p != null) {
-                        System.out.println(p.getArea());
+                    if (serializedPicture != null) {
+                        System.out.println(serializedPicture.getArea());
                     }
                 }
                 case "w" -> System.exit(0);

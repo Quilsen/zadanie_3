@@ -1,5 +1,8 @@
 package com.company;
- abstract class Element {
+
+import java.io.Serializable;
+
+abstract class Element implements Serializable {
     private String label = "Empty";
 
     public Element(){}
@@ -22,4 +25,6 @@ package com.company;
     public abstract String toString();
     public abstract void move(double dx,double dy);
     public abstract double getArea();
+    public abstract double getDistanceFromOrigin();
+
 }

@@ -5,6 +5,11 @@ public class Point extends Element {
 
     public Point(){}
 
+    public Point(double x, double y){
+        this.x = x;
+        this.y = y;
+    }
+
     public Point(double x, double y,String label){
         super(label);
         this.x = x;
@@ -50,4 +55,8 @@ public class Point extends Element {
         return 0;
     }
 
+    @Override
+    public double getDistanceFromOrigin() {
+        return Math.sqrt(Math.pow(this.x,2) + Math.pow(this.y,2));
+    }
 }

@@ -5,6 +5,11 @@ public class Section extends Element{
 
     public Section(){}
 
+    public Section(Point p1, Point p2) {
+        this.p1 = new Point(p1);
+        this.p2 = new Point(p2);
+    }
+
     public Section(Point p1, Point p2, String label) {
         super(label);
         this.p1 = new Point(p1);
@@ -50,4 +55,7 @@ public class Section extends Element{
         return 0;
     }
 
+    public double getDistanceFromOrigin() {
+        return 0;
+    }
 }
