@@ -1,13 +1,10 @@
 package com.company;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.nio.file.attribute.FileAttribute;
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.*;
 
 public class Picture implements Serializable {
     private ArrayList<Element> elements = new ArrayList<>();
@@ -61,7 +58,7 @@ public class Picture implements Serializable {
 
     public String toStringSortedByClassName(){
         ArrayList<Element> copy = new ArrayList<>(elements);
-        copy.sort(new ClassNameComparator());
+        copy.sort(new ClassNameComparator().reversed());
         return listToString(copy);
     }
 

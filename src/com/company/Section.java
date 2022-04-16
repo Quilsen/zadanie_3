@@ -1,5 +1,7 @@
 package com.company;
 
+import static java.lang.Math.*;
+
 public class Section extends Element{
     private Point p1, p2;
 
@@ -56,6 +58,6 @@ public class Section extends Element{
     }
 
     public double getDistanceFromOrigin() {
-        return 0;
+        return sqrt(pow(abs((p1.getY() - p2.getX())/2),2) + pow(abs((p1.getY() - p2.getY())/2),2));
     }
 }
