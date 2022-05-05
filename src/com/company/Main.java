@@ -7,7 +7,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String... args) {
-        Picture picture = null;
+
+    }
+
+        /*Picture picture = null;
         Scanner input = new Scanner(System.in);
         String option1 = "0", option2, label;
         double x1, y1, x2, y2, r;
@@ -197,5 +200,5 @@ public class Main {
                 default -> System.out.println("Brak opcji " + option2);
             }
         }
-    }
+    }*/
 }
