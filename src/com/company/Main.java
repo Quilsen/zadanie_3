@@ -24,12 +24,6 @@ public class Main {
 
         m3 = m1.mull(m2);
 
-        for(Matrix row:m1.rows()){
-
-        }
-
-
-
     }
 
         /*Picture picture = null;

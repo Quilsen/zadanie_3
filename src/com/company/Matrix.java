@@ -104,6 +104,15 @@ public class Matrix implements Iterable<Double> {
         };
     }
 
+    public Iterable<Matrix> rows2(){
+        return new Iterable<Matrix>() {
+            @Override
+            public Iterator<Matrix> iterator() {
+                return rows();
+            }
+        };
+    }
+
     public Iterator<Matrix> rows(){
         return new Iterator<Matrix>() {
             int pos;
