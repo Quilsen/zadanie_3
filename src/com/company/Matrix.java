@@ -8,6 +8,9 @@ class MatrixOperationException extends RuntimeException {}
 public class Matrix implements Iterable<Double> {
     private double m[][];
 
+    public Matrix(){
+    }
+
     public Matrix (int rows, int cols){
         m = new double[rows][cols];
     }
@@ -39,7 +42,7 @@ public class Matrix implements Iterable<Double> {
     }
 
     public Matrix add(Matrix m){
-        if(this.m.length != m.m.length || this.m[0].length != m.m.length){
+        if(this.m.length != m.m.length || this.m[0].length != m.m[0].length){
             throw new MatrixOperationException();
         }
         Matrix sum = new Matrix(this.m.length,this.m[0].length);
@@ -50,13 +53,22 @@ public class Matrix implements Iterable<Double> {
         return sum;
     }
 
-//    public Matrix multiply(Matrix m){
-//        if(this.m.length != m.m.length || this.m[0].length != m.m.length){
-//            throw new MatrixOperationException();
-//        }
-//
-//        return
-//    }
+    public Matrix mull(Matrix m){
+        if(this.m.length != m.m.length || this.m[0].length != m.m[0].length){
+            throw new MatrixOperationException();
+        }
+        Matrix mull = new Matrix(this.m.length,this.m[0].length);
+        double result;
+        for(int i = 0; i < this.m.length; i++)
+            for (int j = 0; j < this.m[0].length; j++){
+                result = 0;
+                for (int k = 0; k < m.m[0].length; k++) {
+                    result += this.m[i][k] * m.m[k][j];
+                }
+                mull.set(i,j,result);
+            }
+        return mull;
+    }
 
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -64,34 +76,56 @@ public class Matrix implements Iterable<Double> {
             for (double v: row){
                 sb.append(String.format("%5.2f, ",v));
             }
+            sb.append("\n");
         }
         return sb.toString();
     }
 
     @Override
     public Iterator<Double> iterator() {
+        //return new DefaultIterator();
         return new Iterator<Double>() {
-            int pos;
-
+            int pos; // = 0; by default
             @Override
             public boolean hasNext() {
                 int rows = m.length;
                 int cols = m[0].length;
-                return pos < rows * cols;
+                return pos<rows*cols;
             }
-
             @Override
             public Double next() {
                 int cols = m[0].length;
-
-                int irow = pos/cols;
+                int irow = pos / cols;
                 int icol = pos % cols;
-
                 double v = m[irow][icol];
                 ++pos;
                 return v;
             }
         };
     }
+
+    public Iterator<Matrix> rows(){
+        return new Iterator<Matrix>() {
+            int pos;
+            @Override
+            public boolean hasNext() {
+                int rows = m.length;
+                return pos<rows;
+            }
+
+            @Override
+            public Matrix next() {
+                int cols = m[0].length;
+                Matrix mm = new Matrix(1,cols);
+                for(int i = 0; i < cols; i++){
+                    mm.set(1,i, m[pos][i]);
+                }
+                pos++;
+                return mm;
+            }
+        };
+
+    }
+
 }
 

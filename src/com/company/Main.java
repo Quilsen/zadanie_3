@@ -7,6 +7,28 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String... args) {
+        Matrix m1 = new Matrix(3,3);
+        Matrix m2 = new Matrix(3,3);
+        Matrix m3 = null;
+
+        for(int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++){
+                m1.set(i,j,1);
+            }
+        for(int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++){
+                m2.set(i,j,2);
+            }
+        System.out.println(m1.toString());
+        System.out.println(m2.toString());
+
+        m3 = m1.mull(m2);
+
+        for(Matrix row:m1.rows()){
+
+        }
+
+
 
     }
 
