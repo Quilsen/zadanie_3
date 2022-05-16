@@ -6,6 +6,7 @@ public class MyQueue<T> {
         Node<U> next;
     }
     Node<T> first, last;
+
     public void add(T data) {
         Node<T> node = new Node<>();
         node.data = data;
@@ -17,6 +18,7 @@ public class MyQueue<T> {
             last = node;
         }
     }
+
     public int count() {
         Node<T> n = first;
         int count = 0;
@@ -26,9 +28,11 @@ public class MyQueue<T> {
         }
         return count;
     }
+
     public boolean isEmpty() {
         return first == null;
     }
+
     public T get() {
         if  (first == null)
             return null;
