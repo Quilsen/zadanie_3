@@ -13,16 +13,11 @@ public class Main {
 
         for(int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++){
-                m1.set(i,j,1);
+                m1.set(i,j,i);
             }
-        for(int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++){
-                m2.set(i,j,2);
-            }
-        System.out.println(m1.toString());
-        System.out.println(m2.toString());
-
-        m3 = m1.mull(m2);
+        for(Matrix rows:m1.cols()){
+            System.out.println(rows.toString());
+        }
 
     }
 

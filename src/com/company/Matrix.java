@@ -104,37 +104,60 @@ public class Matrix implements Iterable<Double> {
         };
     }
 
-    public Iterable<Matrix> rows2(){
+    public Iterable<Matrix> rows(){
         return new Iterable<Matrix>() {
             @Override
             public Iterator<Matrix> iterator() {
-                return rows();
+                return new Iterator<Matrix>() {
+                    int pos;
+                    @Override
+                    public boolean hasNext() {
+                        int rows = m.length;
+                        return pos<rows;
+                    }
+
+                    @Override
+                    public Matrix next() {
+                        int cols = m[0].length;
+                        Matrix rmatrix = new Matrix(1,cols);
+                        for(int i = 0; i < cols; i++){
+                            rmatrix.set(0,i, m[pos][i]);
+                        }
+                        pos++;
+                        return rmatrix;
+                    }
+                };
+            }
+        };
+    }
+    public Iterable<Matrix> cols(){
+        return new Iterable<Matrix>() {
+            @Override
+            public Iterator<Matrix> iterator() {
+                return new Iterator<Matrix>() {
+                    int pos;
+                    @Override
+                    public boolean hasNext() {
+                        int cols = m[0].length;
+                        return pos<cols;
+                    }
+
+                    @Override
+                    public Matrix next() {
+                        int rows = m.length;
+                        Matrix rmatrix = new Matrix(rows,1);
+                        for(int i = 0; i < rows; i++){
+                            rmatrix.set(i,0, m[i][pos]);
+                        }
+                        pos++;
+                        return rmatrix;
+                    }
+                };
             }
         };
     }
 
-    public Iterator<Matrix> rows(){
-        return new Iterator<Matrix>() {
-            int pos;
-            @Override
-            public boolean hasNext() {
-                int rows = m.length;
-                return pos<rows;
-            }
 
-            @Override
-            public Matrix next() {
-                int cols = m[0].length;
-                Matrix mm = new Matrix(1,cols);
-                for(int i = 0; i < cols; i++){
-                    mm.set(1,i, m[pos][i]);
-                }
-                pos++;
-                return mm;
-            }
-        };
-
-    }
 
 }
 
