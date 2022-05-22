@@ -1,6 +1,24 @@
 package com.company;
 
-public class MyQueue<T> {
+import java.util.Iterator;
+
+public class MyQueue<T> implements Iterable<T> {
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public T next() {
+                return null;
+            }
+        };
+    }
+
     private static class Node<U> {
         U data;
         Node<U> next;
